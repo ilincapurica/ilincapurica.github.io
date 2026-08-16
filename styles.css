@@ -29,8 +29,8 @@ img{max-width:100%;display:block}
 .landing{
   min-height:100vh;
   background-image:
-    linear-gradient(rgba(42, 9, 9, 0.40), rgba(42, 9, 9, 0.40)),
-    url("/assets/bg.jpeg");
+    linear-gradient(rgba(42, 9, 9, 0.68), rgba(42, 9, 9, 0.68)),
+    url("assets/bgCropped.jpeg");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -46,9 +46,10 @@ img{max-width:100%;display:block}
 }
 
 .landing-name{
-  margin:0 0 18px;
+  margin:0 0 200px;
+  margin-top:-50px;
   font-size:clamp(3.2rem, 8vw, 9rem);
-  line-height:0.84;
+  line-height:0.68;
   letter-spacing:0.02em;
   text-transform:uppercase;
   color:var(--yellow);
@@ -111,6 +112,9 @@ img{max-width:100%;display:block}
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px 28px;
+  width: 100%;
+  justify-content: center;
+  
 }
 
 .landing-nav .col{
@@ -118,6 +122,11 @@ img{max-width:100%;display:block}
   flex-direction:column;
   gap:18px;
   align-content: center;
+
+}
+.landing-nav .col:nth-child(3) {
+  display:flex;
+  justify-content:center;
 }
 
 .pill{
@@ -173,16 +182,24 @@ img{max-width:100%;display:block}
 .work-item p{margin:0 0 14px;color:var(--muted)}
 
 .gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(4, minmax(120px, 1fr));
+  display:flex;
   gap:12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:12px 4px 4px;
+  scroll-snap-type:x proximity;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.gallery-grid::-webkit-scrollbar{display:none}
 .gallery-thumb{
-  width:100%;
+  width:220px;
   height:160px;
   object-fit:cover;
   border-radius:12px;
   cursor:pointer;
+  flex:0 0 auto;
+  scroll-snap-align:start;
   transition:transform 0.18s ease, opacity 0.18s ease;
 }
 .gallery-thumb:hover{transform:translateY(-2px); opacity:0.95}
